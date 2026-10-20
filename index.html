@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Happy Birthday!</title>
+<style>
+:root{--bg:#fff7ec;--card:#fff;--ink:#2b1a24;--muted:#7a6270;--pink:#e0457b;--gold:#f2a900;--green:#0b7a3b;--line:#f0dccb;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1b121a;--card:#271a25;--ink:#f6e9f0;--muted:#b9a0ae;--pink:#ff6fa1;--gold:#ffc83d;--green:#3ecf7a;--line:#3b2a38}}
+:root[data-theme="dark"]{--bg:#1b121a;--card:#271a25;--ink:#f6e9f0;--muted:#b9a0ae;--pink:#ff6fa1;--gold:#ffc83d;--green:#3ecf7a;--line:#3b2a38}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55;overflow-x:hidden}
+.wrap{max-width:620px;margin:0 auto;padding:16px 16px 56px}
+.hide{display:none!important}
+#gate{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:24px;gap:12px}
+input{width:100%;max-width:320px;padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;text-align:center}
+button{padding:12px 18px;border-radius:12px;border:0;font-size:15px;font-weight:700;cursor:pointer;background:var(--pink);color:#fff}
+button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+button:active{transform:scale(.97)}
+.wrap{position:relative;z-index:1}
+.hero{text-align:center;padding:36px 12px 24px;border-radius:24px;background:radial-gradient(circle at 50% 0%,rgba(224,69,123,.18),transparent 70%)}
+h1 span{background:linear-gradient(90deg,var(--pink),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.letter{font-family:Georgia,"Times New Roman",serif;font-style:italic;border-color:var(--pink);background:linear-gradient(160deg,var(--card),var(--bg))}
+.letter h2{font-style:normal;font-family:system-ui,sans-serif}
+.heart{position:fixed;bottom:-30px;pointer-events:none;z-index:0;opacity:.45;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) translateX(24px) rotate(20deg);opacity:0}}
+.cake{font-size:72px;display:inline-block;animation:bob 2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(3deg)}}
+h1{font-size:34px;line-height:1.15;margin:8px 0}
+h1 span{color:var(--pink)}
+.sub{color:var(--muted);margin:0 0 14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;margin-top:20px;box-shadow:0 8px 24px rgba(224,69,123,.10)}
+h2{font-size:19px;margin:0 0 12px}
+.tl{border-left:3px solid var(--pink);margin-left:8px;padding-left:16px}
+.tl div{margin-bottom:14px;position:relative}
+.tl div:before{content:"";position:absolute;left:-23px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold);border:2px solid var(--card)}
+.tl b{display:block}
+.stage{display:flex;justify-content:center;align-items:flex-end;gap:44px;height:250px;border-bottom:3px solid var(--ink);margin:10px 0}
+.fig{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
+.bar{width:62px;border-radius:31px 31px 6px 6px;display:flex;justify-content:center;padding-top:8px;font-weight:700;font-size:14px;transition:height .5s cubic-bezier(.3,1.4,.5,1)}
+.bar.him{background:var(--green);color:#fff}
+.bar.her{background:var(--gold);color:#2b1a00}
+.nm{font-size:13px;color:var(--muted);margin-top:6px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#wishMsg{min-height:48px;text-align:center;margin-top:10px}
+.candles{display:flex;justify-content:center;gap:14px;font-size:44px;margin:10px 0}
+.candles button{background:none;padding:4px;font-size:44px;line-height:1}
+.wishes{display:grid;gap:10px}
+.wish{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:14px}
+.big{font-size:22px;font-weight:800;text-align:center}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:28px}
+.conf{position:fixed;top:-30px;font-size:22px;pointer-events:none;z-index:50;animation:fall linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(540deg);opacity:.7}}
+</style>
+</head>
+<body>
+
+<div id="gate">
+<div style="font-size:56px">🎁</div>
+<h2 style="margin:0">Hi there! What’s your name?</h2>
+<input id="nameIn" placeholder="Type your name" maxlength="24">
+<button id="enter">Open your surprise 💝</button>
+<small style="color:var(--muted)">Something special is waiting for you 💛</small>
+</div>
+
+<div class="wrap hide" id="site">
+<section class="hero">
+<div class="cake">🎂</div>
+<h1>Happy Birthday,<br><span id="n1">you</span>!</h1>
+<p class="sub">A little website, made with love for a friend I am so glad I met. 💛</p>
+<button id="pop">Pop confetti 🎉</button>
+</section>
+
+<section class="card">
+<h2>Our story so far</h2>
+<div class="tl">
+<div><b>The JAMB lesson</b>We ended up in the same JAMB lesson. A stressful season, but it brought us together.</div>
+<div><b>Becoming friends</b>Somewhere between the lessons and the stress, we became friends. Easily the best part of the whole JAMB story.</div>
+<div><b>The big claim</b>You told me we are the same height. We are not. Respectfully.</div>
+<div><b>Today</b>Another year for you, and I still have the height advantage. 😄</div>
+</div>
+</section>
+
+<section class="card letter">
+<h2>A note for you 💌</h2>
+<p>Dear <span id="n3">friend</span>,</p>
+<p>Of all the things JAMB gave me, you are the one I am happiest about. Thank you for the laughs, the company and even the arguments about our height. Today is all about you, so enjoy every minute of it.</p>
+<p style="margin-bottom:0">With love, your friend 💛</p>
+</section>
+
+<section class="card">
+<h2>Make a birthday wish</h2>
+<p class="sub" style="margin-bottom:0">Wish to be taller. Tap the button and see what the universe says.</p>
+<div class="stage">
+<div class="fig"><div class="bar him" id="bHim"></div><div class="nm">Me</div></div>
+<div class="fig"><div class="bar her" id="bHer"></div><div class="nm" id="n2">You</div></div>
+</div>
+<div style="text-align:center"><button id="wish">Make a wish ✨</button></div>
+<div id="wishMsg">Tap the button. Birthday wishes are free.</div>
+</section>
+
+<section class="card">
+<h2>Blow out the candles</h2>
+<p class="sub" style="margin-top:0">Tap each flame to blow it out.</p>
+<div class="candles" id="candles"></div>
+<div id="candleMsg" class="big"></div>
+</section>
+
+<section class="card">
+<h2>My wishes for you</h2>
+<div class="wishes">
+<div class="wish">🌟 May this year bring you every result you are working and praying for.</div>
+<div class="wish">😄 May people always believe you when you say you are tall. Starting with me, maybe.</div>
+<div class="wish">🍰 May your cake be big, your day be loud, and your joy never run out.</div>
+<div class="wish">💛 May our friendship keep growing, even if you never do. 😄</div>
+</div>
+</section>
+
+<footer>Made with love, confetti and a measuring tape, from your friend. Happy birthday! 🎈</footer>
+</div>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+var HIM=175, HER=155, herNow=HER;
+var wishLines=[
+"Wish received. Granted: +1 cm.",
+"The universe says: nice try. +1 cm.",
+"Wish approved, terms and conditions apply. +1 cm.",
+"Standing on tiptoes does not count, but fine. +1 cm.",
+"Almost there! Still shorter, though. +1 cm."
+];
+var wi=0;
+function px(cm){return Math.round((cm-90)/130*230+20)}
+function draw(){
+  $('bHim').style.height=px(HIM)+'px';$('bHer').style.height=px(herNow)+'px';
+  $('bHim').textContent=HIM;$('bHer').textContent=herNow;
+}
+function confetti(){
+  var e=['🎉','🎊','🎂','🎈','✨','🥳','🍰','💛'];
+  for(var i=0;i<45;i++){(function(i){setTimeout(function(){
+    var s=document.createElement('span');s.className='conf';
+    s.textContent=e[Math.floor(Math.random()*e.length)];
+    s.style.left=Math.random()*100+'vw';
+    s.style.animationDuration=(2.5+Math.random()*2.5)+'s';
+    document.body.appendChild(s);
+    setTimeout(function(){s.remove()},5500);
+  },i*55)})(i)}
+}
+function hearts(){
+  var h=['💛','💖','🌸','✨','💝'];
+  for(var i=0;i<14;i++){
+    var s=document.createElement('span');s.className='heart';
+    s.textContent=h[i%h.length];
+    s.style.left=(Math.random()*96)+'vw';
+    s.style.fontSize=(16+Math.random()*16)+'px';
+    s.style.animationDuration=(9+Math.random()*9)+'s';
+    s.style.animationDelay=(-Math.random()*12)+'s';
+    document.body.appendChild(s);
+  }
+}
+function start(name){
+  name=(name||'').trim()||'you';
+  ['n1','n2','n3'].forEach(function(id){$(id).textContent=name});
+  document.title='Happy Birthday, '+name+'!';
+  $('gate').classList.add('hide');$('site').classList.remove('hide');
+  draw();hearts();setTimeout(confetti,400);
+}
+$('enter').onclick=function(){start($('nameIn').value)};
+$('nameIn').addEventListener('keydown',function(e){if(e.key==='Enter')start($('nameIn').value)});
+$('pop').onclick=confetti;
+$('wish').onclick=function(){
+  if(herNow<HIM-1){herNow+=1;$('wishMsg').textContent=wishLines[wi%wishLines.length];wi++;draw();}
+  else{$('wishMsg').textContent="Wish limit reached. Even the universe will not let you pass me. 😄";}
+};
+var lit=5;
+function buildCandles(){
+  var c=$('candles');
+  for(var i=0;i<5;i++){
+    var b=document.createElement('button');b.textContent='🕯️';b.setAttribute('aria-label','Blow out candle');
+    b.onclick=function(){
+      if(this.dataset.off)return;
+      this.dataset.off='1';this.textContent='💨';lit--;
+      if(lit===0){$('candleMsg').textContent='🎉 All out! Wish made. Happy birthday! 🎉';confetti();}
+    };
+    c.appendChild(b);
+  }
+}
+buildCandles();
+var q=null;try{q=new URLSearchParams(location.search).get('name')}catch(e){}
+if(q){start(q)}
+</script>
+</body>
+</html>
